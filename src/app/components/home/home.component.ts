@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +7,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  j1: string = "";
-
-  j2: string = "";
-
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit() {
   }

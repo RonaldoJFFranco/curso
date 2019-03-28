@@ -1,6 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Player } from '../../model/player';
-import { PlayerService } from '../../services/player.service';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'game-board',
@@ -9,20 +7,13 @@ import { PlayerService } from '../../services/player.service';
 })
 export class GameBoardComponent implements OnInit {
 
-  player : PlayerService;
-
-  constructor(_player : PlayerService) {
-    this.player = _player;
+  constructor() {
   }
 
   ngOnInit() {
   }
 
-  @Input() playerBoard: Player;
-  @Output() point = new EventEmitter();
   
   change(event){
-    this.playerBoard = event;
-    this.point.emit(this.playerBoard);
   }
 }

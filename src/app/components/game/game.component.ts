@@ -1,11 +1,8 @@
 import { Component, OnInit, TemplateRef,ViewChild}  from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PlayerService } from '../../services/player.service';
 import { Player } from '../../model/player';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { WinnersService } from 'src/app/services/winners.service';
-
 
 @Component({
   selector: 'app-game',
@@ -17,7 +14,6 @@ export class GameComponent implements OnInit {
 
   public modalRef: BsModalRef;
 
-  winners: WinnersService;
   player: PlayerService;
   inscricao: Subscription;
   
@@ -44,22 +40,9 @@ export class GameComponent implements OnInit {
   @ViewChild('template') myModal: TemplateRef<any>;
 
   constructor(
-    private route: ActivatedRoute, 
-    private _player: PlayerService, 
     private modalService: BsModalService,
-    private _winner: WinnersService
   ){
-    this.winners = _winner;
-    this.player = _player;
-    this.inscricao = this.route.queryParams.subscribe(
-      (params: any) => {
-        this.j1 = { name: params['player1'], value: 1 };
-        this.j2 = { name: params['player2'], value: 2 };
-        this.player.setPlayer1(this.j1);
-        this.player.setPlayer2(this.j2);
-        this.player.setPlayerTurn(this.j1);
-      }
-    );
+
   }
 
   ngOnInit() {
@@ -77,8 +60,7 @@ export class GameComponent implements OnInit {
     if (this.finish){
       this.finalMessage = `${this.playerTurn.name} Venceu !!`;
       clearInterval(this.interval);
-      const request = this.winners.addWinner(this.playerTurn, this.sec).subscribe();
-      setTimeout(() => request.unsubscribe(), 2000);
+
       this.openModal(this.myModal);
     }
     else if(this.gameTurn == 9){
