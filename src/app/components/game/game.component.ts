@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { PlayerService } from '../../services/player.service';
 import { Player } from '../../model/player';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -31,7 +32,7 @@ export class GameComponent implements OnInit {
   c2:number;
   c3:number;
 
-  sec:number = 0;
+  sec: number = 0;
   gameTurn: number = 1;
   finish: boolean = false;
   finalMessage;
@@ -40,9 +41,19 @@ export class GameComponent implements OnInit {
   @ViewChild('template') myModal: TemplateRef<any>;
 
   constructor(
+    private route: ActivatedRoute,
+    private _player: PlayerService,
     private modalService: BsModalService,
   ){
-
+    this.inscricao = this.route.queryParams.subscribe(
+      (param: any) => {
+        this.j1 = {name: param['player1'], value: 1}
+        this.j2 = {name: param['player2'], value: 2}
+        this._player.setPlayer1(this.j1);
+        this._player.setPlayer2(this.j2);
+        this._player.setPlayerTurn(this.j1);
+      }
+    )
   }
 
   ngOnInit() {

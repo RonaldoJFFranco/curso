@@ -11,6 +11,8 @@ import { GameBoardComponent } from './components/game-board/game-board.component
 import { PlayerService } from './services/player.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { WinnersComponent } from './components/winners/winners.component';
+import { TimerPipe } from './pipes/timer.pipe';
+import { SetPointDirective } from './directives/set-point.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { WinnersComponent } from './components/winners/winners.component';
     GameComponent,
     GameInfosComponent,
     GameBoardComponent,
-    WinnersComponent
+    WinnersComponent,
+    TimerPipe,
+    SetPointDirective
   ],
   imports: [
     BrowserModule,

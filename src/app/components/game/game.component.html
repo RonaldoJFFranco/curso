@@ -1,6 +1,7 @@
 <div class="back">
 
-    
+    <game-infos [sec]="sec" [turn]="turn" [playerTurn]="playerTurn"></game-infos>
+    <game-board [playerBoard]="playerTurn" (point)="attPlayer(event)"></game-board>
     <ng-template #template id="template">
         <div class="modal-header">
             <p  class="modal-title pull-left" 

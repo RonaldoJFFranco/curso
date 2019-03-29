@@ -10,18 +10,18 @@
               <h3 class="login-heading mb-4">Jogo da Velha!</h3>
               <div class="form-label-group">
                 <input type="text" id="name1" class="form-control" placeholder="Jogador 1" type="text"
-                   required autofocus>
+                  [(ngModel)]="j1" required autofocus>
                 <label for="name1">Jogador 1</label>
               </div>
 
               <div class="form-label-group">
                 <input type="text" id="name2" class="form-control" placeholder="Jogador 2" type="text"
-                   required autofocus>
+                 [(ngModel)]="j2" required autofocus>
                 <label for="name2">Jogador 2</label>
               </div>
 
               <a class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                 type="submit">jogar</a>
+                routerLink="/game" [queryParams]="{player1: j1, player2: j2}" type="submit">jogar</a>
                 
               <a class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
                 routerLink="/winners" type="submit">Ganhadores</a>

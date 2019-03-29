@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Player } from 'src/app/model/player';
 
 @Component({
   selector: 'game-infos',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameInfosComponent implements OnInit {
 
+  @Input() sec: number;
+  @Input() turn: number;
+  @Input() playerTurn: Player;
+  
   constructor() {
   }
 
